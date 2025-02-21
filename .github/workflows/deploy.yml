@@ -24,6 +24,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
+      - name: Run Tests  # ✅ Testleri ekleme aşaması
+        run: |
+          pytest --disable-warnings --maxfail=3
+
       - name: Set up gcloud CLI
         uses: google-github-actions/auth@v1
         with:
