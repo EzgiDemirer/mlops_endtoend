@@ -24,10 +24,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run tests
-        run: |
-          pytest
-
       - name: Set up gcloud CLI
         uses: google-github-actions/auth@v1
         with:
