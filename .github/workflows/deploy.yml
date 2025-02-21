@@ -36,7 +36,7 @@ jobs:
           PROJECT_ID: ${{ secrets.PROJECT_ID }}
         run: |
           gcloud auth configure-docker us-central1-docker.pkg.dev
-          docker build -t us-central1-docker.pkg.dev/plucky-point-451512-u9/mlops/fastapi:latest 
+          docker build -t us-central1-docker.pkg.dev/plucky-point-451512-u9/mlops/fastapi:latest .
           docker push us-central1-docker.pkg.dev/plucky-point-451512-u9/mlops/fastapi:latest
 
       - name: Deploy to Cloud Run
