@@ -45,14 +45,15 @@ jobs:
 
       - name: Deploy to Cloud Run
         env:
-             PROJECT_ID: ${{ secrets.PROJECT_ID }}
-             SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
+            PROJECT_ID: ${{ secrets.PROJECT_ID }}
+            SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
         run: |
-          gcloud run deploy fastapi 
-            --image=us-central1-docker.pkg.dev/$PROJECT_ID/mlops/fastapi:latest 
-            --allow-unauthenticated 
-            --port=8080 
-            --service-account=$SERVICE_ACCOUNT 
-            --cpu-boost 
-            --region=us-central1 
-            --project=$PROJECT_ID
+            gcloud run deploy fastapi \
+              --image=us-central1-docker.pkg.dev/$PROJECT_ID/mlops/fastapi:latest \
+              --allow-unauthenticated \
+              --port=8080 \
+              --service-account=$SERVICE_ACCOUNT \
+              --cpu-boost \
+              --region=us-central1 \
+              --project=$PROJECT_ID
+  
