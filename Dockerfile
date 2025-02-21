@@ -1,15 +1,20 @@
 # Base image olarak Python kullan
 FROM python:3.10
 
-# Çalışma dizinini ayarla
-WORKDIR /app
+RUN mkdir code/
 
-# Bağımlılıkları yükle
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+WORKDIR code/
 
-# Ana uygulama dosyasını kopyala
-COPY . .
+COPY . . 
 
-# FastAPI uygulamasını çalıştır
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
+
+EXPOSE 8080
+
+CMD [ "uvicorn","main:app","--host=0.0.0.0","--port=8080"]
+
+
+
+
+

@@ -29,9 +29,8 @@ jobs:
         with:
           project_id: ${{ secrets.PROJECT_ID }}
           credentials_json: ${{ secrets.CREDENTIALS_JSON }}
-          service_account_key: ${{ secrets.SERVICE_ACCOUNT }}
-          export_default_credentials: true
-
+          service_account: ${{ secrets.SERVICE_ACCOUNT }}
+          
       - name: Build the container image and push to Artifact Registry
         env:
           PROJECT_ID: ${{ secrets.PROJECT_ID }}
