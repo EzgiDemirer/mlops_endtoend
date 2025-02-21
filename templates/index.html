@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastAPI Kredi Tahmin</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        input, button { margin: 10px; padding: 10px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h1>🏦 Kredi Onay Tahmin Sistemi</h1>
+    <form id="predict-form">
+        <label>Gelir: <input type="number" id="income" required></label><br>
+        <label>Kredi Skoru: <input type="number" id="credit_score" required></label><br>
+        <label>Borç Oranı: <input type="number" step="0.01" id="debt_ratio" required></label><br>
+        <label>Yaş: <input type="number" id="age" required></label><br>
+        <label>Çalışma Yılı: <input type="number" id="employment_years" required></label><br>
+        <button type="submit">Tahmin Yap</button>
+    </form>
+    <h2 id="result"></h2>
+
+    <script>
+        document.getElementById("predict-form").addEventListener("submit", async function(event) {
+            event.preventDefault();
+            const income = document.getElementById("income").value;
+            const credit_score = document.getElementById("credit_score").value;
+            const debt_ratio = document.getElementById("debt_ratio").value;
+            const age = document.getElementById("age").value;
+            const employment_years = document.getElementById("employment_years").value;
+            
+            const response = await fetch("/predict?income=" + income + "&credit_score=" + credit_score +
+                "&debt_ratio=" + debt_ratio + "&age=" + age + "&employment_years=" + employment_years, {
+                method: "POST"
+            });
+
+            const result = await response.json();
+            document.getElementById("result").innerText = "Tahmin Sonucu: " + (result.approved ? "✅ Onaylandı" : "❌ Reddedildi");
+        });
+    </script>
+</body>
+</html>
