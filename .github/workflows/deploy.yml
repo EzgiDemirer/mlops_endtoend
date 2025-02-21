@@ -44,7 +44,7 @@ jobs:
              PROJECT_ID: ${{ secrets.PROJECT_ID }}
              SERVICE_ACCOUNT: ${{ secrets.SERVICE_ACCOUNT }}
         run: |
-          gcloud run deploy fastapi \
+          gcloud run deploy fastapi2 \
             --image=us-central1-docker.pkg.dev/$PROJECT_ID/mlops/fastapi:latest \
             --allow-unauthenticated \
             --port=8080 \
