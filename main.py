@@ -29,7 +29,7 @@ if os.path.exists(file_path):
     logger.info("Dataset loaded successfully.")
 else:
     df = pd.DataFrame()  # Eğer dosya yoksa boş DataFrame kullan
-    logger.warning(f"Warning: {file_path} not found!")
+    logger.warning(f"Warning: {file_path} not found")
 
 def train_xgboost():
     if df.empty:
