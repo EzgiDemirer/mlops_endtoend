@@ -80,6 +80,6 @@ async def predict(income: float, credit_score: int, debt_ratio: float, age: int,
     prediction = model.predict(input_data)[0]
     return {"approved": int(prediction)}
 
-# Uygulamayı başlat
+
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8080)

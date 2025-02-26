@@ -18,7 +18,6 @@ def test_predict(income, credit_score, debt_ratio, age, employment_years, expect
         "employment_years": employment_years
     }
 
-    # None olan parametreleri request'ten çıkar (FastAPI None değerleri kabul etmeyebilir)
     params = {k: v for k, v in params.items() if v is not None}
 
     response = client.post("/predict", params=params)
@@ -28,7 +27,7 @@ def test_predict(income, credit_score, debt_ratio, age, employment_years, expect
         assert "approved" in response.json()
         assert response.json()["approved"] in [0, 1]
     else:
-        # Yeni eklenen hata kontrolü
+      
         error_response = response.json()
-        assert "detail" in error_response  # FastAPI'nin hata yapısı
-        assert isinstance(error_response["detail"], list)  # Hata mesajı genellikle liste içinde
+        assert "detail" in error_response  
+        assert isinstance(error_response["detail"], list)  
