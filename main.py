@@ -54,7 +54,7 @@ def train_xgboost():
         logger.error(f"Model training failed: {e}")
         return None
 
-# Model yükleme
+
 if os.path.exists(model_path):
     model = joblib.load(model_path)
     logger.info("Model loaded successfully.")
