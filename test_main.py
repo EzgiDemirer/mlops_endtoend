@@ -5,9 +5,9 @@ from main import app
 client = TestClient(app)
 
 @pytest.mark.parametrize("income, credit_score, debt_ratio, age, employment_years, expected_status", [
-    (50000, 700, 0.3, 30, 5, 200),  # Geçerli veri
-    (None, 700, 0.3, 30, 5, 422),  # Eksik gelir (income)
-    (50000, None, 0.3, 30, 5, 422),  # Eksik kredi skoru
+    (50000, 700, 0.3, 30, 5, 200),  
+    (None, 700, 0.3, 30, 5, 422),  
+    (50000, None, 0.3, 30, 5, 422),  
 ])
 def test_predict(income, credit_score, debt_ratio, age, employment_years, expected_status):
     params = {
