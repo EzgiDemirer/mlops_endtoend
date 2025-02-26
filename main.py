@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 import uvicorn
 import os
 
-# Logging ayarları
+
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -23,12 +23,12 @@ async def root(request: Request):
 file_path = "credit_approval_data.csv"
 model_path = "xgboost_credit_model.pkl"
 
-# Veri dosyasını yükleme
+
 if os.path.exists(file_path):
     df = pd.read_csv(file_path)
     logger.info("Dataset loaded successfully.")
 else:
-    df = pd.DataFrame()  # Eğer dosya yoksa boş DataFrame kullan
+    df = pd.DataFrame()  
     logger.warning(f"Warning: {file_path} not found")
 
 def train_xgboost():
